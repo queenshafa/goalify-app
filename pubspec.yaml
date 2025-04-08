@@ -38,7 +38,7 @@ dependencies:
   flutter_svg: ^2.0.17
   another_carousel_pro: ^1.0.2
   carousel_slider: ^5.0.0
-  flutter_custom_dropdown: ^2.0.1
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:

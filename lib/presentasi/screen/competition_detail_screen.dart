@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
 
-class CompetitionDetailScreen extends StatelessWidget {
+class CompetitionDetailScreen extends StatefulWidget {
   const CompetitionDetailScreen({super.key});
+
+  @override
+  State<CompetitionDetailScreen> createState() =>
+      _CompetitionDetailScreenState();
+}
+
+class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
+  String? selectedCategory;
+  bool isExpanded = false;
+
+  final List<String> categories = [
+    'App Development',
+    'Web Design',
+    'UI/UX',
+    'Cyber Security',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -111,23 +127,61 @@ class CompetitionDetailScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Column(
-                children: [
-                  Container(
-                    width: 370,
-                    height: 45,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color(0xffF9EF91).withOpacity(0.7),
-                          const Color(0xFFFFF8B9).withOpacity(0.4),
-                        ],
-                      ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+                child: Container(
+                  width: 370,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(
+                      colors: [
+                        const Color(0xffF9EF91).withOpacity(0.5),
+                        const Color(0xff352B70)
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                    child: const Text('Competitions Categories'),
                   ),
-                ],
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Competitions Categories',
+                        style: TextStyle(
+                          fontFamily: 'Gabarito',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Icon(
+                        isExpanded
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
               ),
+              if (isExpanded)
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  child: Column(
+                    children: [
+                      categoryItem('UI/UX Application', 'Middle School'),
+                      categoryItem('Web Design', 'High School'),
+                      categoryItem('Design Poster', 'High School'),
+                    ],
+                  ),
+                ),
               const SizedBox(height: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -307,6 +361,40 @@ class CompetitionDetailScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget categoryItem(String title, String level) {
+    return Container(
+      width: 370,
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.white.withOpacity(0.5)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'Gabarito',
+              fontSize: 15,
+              color: Colors.white,
+            ),
+          ),
+          Text(
+            level,
+            style: const TextStyle(
+              fontFamily: 'Gabarito',
+              fontSize: 14,
+              color: Colors.white70,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
