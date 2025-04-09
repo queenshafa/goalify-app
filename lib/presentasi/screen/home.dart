@@ -253,8 +253,8 @@ class Home extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0xFF4AEBC8).withOpacity(0.4),
-                            const Color(0xFF33C2A4).withOpacity(0.8)
+                            const Color(0xFFFFFFFF).withOpacity(0.2),
+                            const Color(0xFF33C2A4).withOpacity(0.5)
                           ],
                         ),
                         border: Border.all(
@@ -343,8 +343,8 @@ class Home extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0xFF4AEBC8).withOpacity(0.4),
-                            const Color(0xFF33C2A4).withOpacity(0.8)
+                            const Color(0xFFFFFFFF).withOpacity(0.2),
+                            const Color(0xFFF04F54).withOpacity(0.3)
                           ],
                         ),
                         border: Border.all(
@@ -396,8 +396,8 @@ class Home extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0xFF4AEBC8).withOpacity(0.4),
-                            const Color(0xFF33C2A4).withOpacity(0.8)
+                            const Color(0xFFFFFFFF).withOpacity(0.2),
+                            const Color(0xFFF04F54).withOpacity(0.5)
                           ],
                         ),
                         border: Border.all(
