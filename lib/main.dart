@@ -10,6 +10,7 @@ import 'package:goalify/presentasi/screen/sign_in_screen.dart';
 import 'package:goalify/presentasi/screen/sign_up_screen.dart';
 import 'package:goalify/presentasi/screen/splash_screen.dart';
 import 'package:goalify/presentasi/screen/testhome.dart';
+import 'package:goalify/presentasi/widget/navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         'teslagi': (context) => const Home(),
         'tes': (context) => const EventScreen(),
         'detail': (context) => const EventDetailScreen(),
+        'mainLayout': (context) => const NavBar()
       },
     );
   }

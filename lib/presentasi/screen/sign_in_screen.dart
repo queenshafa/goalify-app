@@ -123,7 +123,7 @@ class SignInScreen extends StatelessWidget {
                                                   Navigator
                                                       .pushReplacementNamed(
                                                           context,
-                                                          'homeScreen');
+                                                          'mainLayout');
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor: Colors.white,

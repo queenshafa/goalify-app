@@ -157,7 +157,7 @@ class SignUpScreen extends StatelessWidget {
                                                         Navigator
                                                             .pushReplacementNamed(
                                                                 context,
-                                                                'homeScreen');
+                                                                'mainLayout');
                                                       },
                                                       style: ElevatedButton
                                                           .styleFrom(
