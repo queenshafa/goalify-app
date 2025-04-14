@@ -157,7 +157,7 @@ class SignUpScreen extends StatelessWidget {
                                                         Navigator
                                                             .pushReplacementNamed(
                                                                 context,
-                                                                'mainLayout');
+                                                                '/mainLayout');
                                                       },
                                                       style: ElevatedButton
                                                           .styleFrom(
@@ -219,7 +219,7 @@ class SignUpScreen extends StatelessWidget {
                                                             Navigator
                                                                 .pushReplacementNamed(
                                                                     context,
-                                                                    'signInScreen');
+                                                                    '/signInScreen');
                                                           },
                                                           child: Text(
                                                             'Sign In',

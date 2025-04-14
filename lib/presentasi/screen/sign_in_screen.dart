@@ -123,7 +123,7 @@ class SignInScreen extends StatelessWidget {
                                                   Navigator
                                                       .pushReplacementNamed(
                                                           context,
-                                                          'mainLayout');
+                                                          '/mainLayout');
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor: Colors.white,
@@ -169,7 +169,7 @@ class SignInScreen extends StatelessWidget {
                                                       Navigator
                                                           .pushReplacementNamed(
                                                               context,
-                                                              'signUpScreen');
+                                                              '/signUpScreen');
                                                     },
                                                     child: Text(
                                                       'Sign Up',

@@ -146,7 +146,7 @@ class EventScreen extends StatelessWidget {
                 location: 'Bekasi',
               ),
               const SizedBox(
-                height: 50,
+                height: 100,
               )
             ],
           ),

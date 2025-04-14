@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [
                   Color(0xFF363686),
                   Color(0xFF5353CE)
@@ -97,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     duration: const Duration(milliseconds: 400),
                   );
                 } else {
-                  Navigator.pushNamed(context, 'signInScreen');
+                  Navigator.pushNamed(context, '/signInScreen');
                 }
               },
               child: const Text(
@@ -116,7 +116,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, 'signInScreen');
+              Navigator.pushReplacementNamed(context, '/signInScreen');
             },
             child: Text(
               'Skip',

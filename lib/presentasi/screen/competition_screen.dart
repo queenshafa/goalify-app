@@ -247,7 +247,7 @@ class CompetitionScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 50,
+                height: 100,
               )
             ],
           ),

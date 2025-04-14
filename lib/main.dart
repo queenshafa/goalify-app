@@ -31,17 +31,18 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const SplashScreen(),
-        'onboardingScreen': (context) => const OnboardingScreen(),
-        'signInScreen': (context) => const SignInScreen(),
-        'signUpScreen': (context) => const SignUpScreen(),
-        'homeScreen': (context) => const HomeScreen(),
-        'ngetes': (context) => const Testhome(),
-        'competitionScreen': (context) => const CompetitionScreen(),
-        'competitionDetailScreen': (context) => const CompetitionDetailScreen(),
-        'teslagi': (context) => const Home(),
-        'tes': (context) => const EventScreen(),
-        'detail': (context) => const EventDetailScreen(),
-        'mainLayout': (context) => const NavBar()
+        '/onboardingScreen': (context) => const OnboardingScreen(),
+        '/signInScreen': (context) => const SignInScreen(),
+        '/signUpScreen': (context) => const SignUpScreen(),
+        '/homeScreen': (context) => const HomeScreen(),
+        '/ngetes': (context) => const Testhome(),
+        '/competitionScreen': (context) => const CompetitionScreen(),
+        '/competitionDetailScreen': (context) =>
+            const CompetitionDetailScreen(),
+        '/teslagi': (context) => const Home(),
+        '/eventScreen': (context) => const EventScreen(),
+        '/detail': (context) => const EventDetailScreen(),
+        '/mainLayout': (context) => const NavBar()
       },
     );
   }
