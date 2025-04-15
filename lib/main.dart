@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalify/presentasi/screen/competition_detail_screen.dart';
+import 'package:goalify/presentasi/screen/competition_registration.dart';
 import 'package:goalify/presentasi/screen/competition_screen.dart';
 import 'package:goalify/presentasi/screen/event_detail_screen.dart';
 import 'package:goalify/presentasi/screen/event_screen.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/competitionScreen': (context) => const CompetitionScreen(),
         '/competitionDetailScreen': (context) =>
             const CompetitionDetailScreen(),
+        '/registration': (context) => const CompetitionRegistration(),
         '/teslagi': (context) => const Home(),
         '/eventScreen': (context) => const EventScreen(),
         '/detail': (context) => const EventDetailScreen(),
