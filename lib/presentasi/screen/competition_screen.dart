@@ -227,7 +227,10 @@ class CompetitionScreen extends StatelessWidget {
                               width: 150,
                               height: 25,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, 'competitionDetailScreen');
+                                },
                                 child: const Text(
                                   "See more",
                                   style: TextStyle(

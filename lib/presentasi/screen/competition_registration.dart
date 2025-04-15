@@ -11,6 +11,7 @@ class CompetitionRegistration extends StatefulWidget {
 
 class _CompetitionRegistrationState extends State<CompetitionRegistration> {
   bool isExpanded = false;
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
           ),
         ),
         child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -119,6 +121,54 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
               ),
               const SizedBox(height: 8),
               _buildCategorySection(),
+              const SizedBox(
+                height: 12,
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                      value: isChecked,
+                      activeColor: Colors.purple,
+                      onChanged: (newBool) {
+                        setState(() {
+                          isChecked = newBool!;
+                        });
+                      }),
+                  const Text(
+                    ' I declare that all the information provided is true and\naccurate.',
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Gabarito',
+                        color: Colors.white),
+                  )
+                ],
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Checkbox(
+                      value: isChecked,
+                      activeColor: Colors.purple,
+                      onChanged: (newBool) {
+                        setState(() {
+                          isChecked = newBool!;
+                        });
+                      }),
+                  const Text(
+                    'I agree to follow all the rules and requirements set by the\ncommittee.',
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Gabarito',
+                        color: Colors.white),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              _buildRegisterButton()
             ],
           ),
         ),
@@ -146,8 +196,8 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
                   'Choose your competition!',
                   style: TextStyle(
                     fontFamily: 'Gabarito',
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                     color: Colors.white,
                   ),
                 ),
@@ -209,4 +259,27 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
       borderRadius: BorderRadius.circular(10),
     );
   }
+}
+
+Widget _buildRegisterButton() {
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xff2A2579),
+      side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
+      minimumSize: const Size(370, 60),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(50),
+      ),
+    ),
+    onPressed: () {},
+    child: const Text(
+      'Register Now!',
+      style: TextStyle(
+        fontFamily: 'Gabarito',
+        fontSize: 17,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
+    ),
+  );
 }

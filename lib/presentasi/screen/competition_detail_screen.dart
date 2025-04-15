@@ -292,7 +292,9 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
           borderRadius: BorderRadius.circular(50),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, '/registration');
+      },
       child: const Text(
         'Register Now!',
         style: TextStyle(
