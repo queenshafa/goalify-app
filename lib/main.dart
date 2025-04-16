@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goalify/presentasi/screen/add_goals_screen.dart';
+import 'package:goalify/presentasi/screen/add_schedule_screen.dart';
 import 'package:goalify/presentasi/screen/competition_detail_screen.dart';
 import 'package:goalify/presentasi/screen/competition_registration.dart';
 import 'package:goalify/presentasi/screen/competition_screen.dart';
@@ -7,6 +9,8 @@ import 'package:goalify/presentasi/screen/event_screen.dart';
 import 'package:goalify/presentasi/screen/home.dart';
 import 'package:goalify/presentasi/screen/home_screen.dart';
 import 'package:goalify/presentasi/screen/onboarding_screen.dart';
+import 'package:goalify/presentasi/screen/option_screen.dart';
+import 'package:goalify/presentasi/screen/profile_screen.dart';
 import 'package:goalify/presentasi/screen/sign_in_screen.dart';
 import 'package:goalify/presentasi/screen/sign_up_screen.dart';
 import 'package:goalify/presentasi/screen/splash_screen.dart';
@@ -44,6 +48,11 @@ class MyApp extends StatelessWidget {
         '/teslagi': (context) => const Home(),
         '/eventScreen': (context) => const EventScreen(),
         '/detail': (context) => const EventDetailScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/schedule&goals': (context) => const ProfileScreen(),
+        '/options': (context) => const OptionScreen(),
+        '/addSchedule': (context) => const AddScheduleScreen(),
+        '/addGoals': (context) => const AddGoalsScreen(),
         '/mainLayout': (context) => const NavBar()
       },
     );
