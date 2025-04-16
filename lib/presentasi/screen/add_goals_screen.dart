@@ -33,7 +33,7 @@ class AddGoalsScreen extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            alignment: Alignment.center,
+            // alignment: Alignment.center,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xff3F369A), Color(0xff070942)],
@@ -44,7 +44,8 @@ class AddGoalsScreen extends StatelessWidget {
           ),
           SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30, vertical: 120),
               child: Center(
                 child: Container(
                   padding: const EdgeInsets.all(20),
@@ -133,7 +134,8 @@ class AddGoalsScreen extends StatelessWidget {
                             child: const Text(
                               'Add Goal',
                               style: TextStyle(
-                                fontFamily: 'GabaritoMedium',
+                                fontFamily: 'Gabarito',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 16,
                               ),
                             ),
@@ -155,7 +157,8 @@ class AddGoalsScreen extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-        fontFamily: 'GabaritoSemiBold',
+        fontFamily: 'Gabarito',
+        fontWeight: FontWeight.w500,
         fontSize: 16,
         color: Colors.white,
       ),
