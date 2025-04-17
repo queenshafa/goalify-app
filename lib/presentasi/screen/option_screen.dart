@@ -26,7 +26,7 @@ class OptionScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        // padding: const EdgeInsets.symmetric(vertical: 10),
         alignment: Alignment.center,
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -39,10 +39,15 @@ class OptionScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(20),
           width: 370,
+          height: 300,
+          alignment: Alignment.center,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            color: const Color(0xFF1C1A57),
-            border: Border.all(color: Colors.white24),
+            color: const Color(0xff121253).withOpacity(0.8),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.5),
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(30),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -50,13 +55,13 @@ class OptionScreen extends StatelessWidget {
               const Text(
                 'Choose One',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontFamily: 'Gabarito',
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 25),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/addSchedule');
@@ -66,14 +71,14 @@ class OptionScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  minimumSize: const Size(180, 48),
+                  minimumSize: const Size(300, 60),
                 ),
                 child: const Text(
                   'Add Schedule',
                   style: TextStyle(
                     fontFamily: 'Gabarito',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
@@ -88,14 +93,14 @@ class OptionScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  minimumSize: const Size(260, 48),
+                  minimumSize: const Size(300, 60),
                 ),
                 child: const Text(
                   'Add Goals',
                   style: TextStyle(
                     fontFamily: 'Gabarito',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
