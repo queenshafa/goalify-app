@@ -26,6 +26,7 @@ class AddScheduleScreen extends StatelessWidget {
         ),
       ),
       body: Container(
+        padding: const EdgeInsets.symmetric(vertical: 100),
         alignment: Alignment.center,
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -59,7 +60,8 @@ class AddScheduleScreen extends StatelessWidget {
                       const Text(
                         'Add Schedule',
                         style: TextStyle(
-                          fontFamily: 'GabaritoSemiBold',
+                          fontFamily: 'Gabarito',
+                          fontWeight: FontWeight.w600,
                           fontSize: 18,
                           color: Colors.white,
                         ),
@@ -68,8 +70,9 @@ class AddScheduleScreen extends StatelessWidget {
                       const Text(
                         'Title',
                         style: TextStyle(
-                          fontFamily: 'GabaritoMedium',
-                          fontSize: 14,
+                          fontFamily: 'Gabarito',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
@@ -81,8 +84,9 @@ class AddScheduleScreen extends StatelessWidget {
                       const Text(
                         'Time',
                         style: TextStyle(
-                          fontFamily: 'GabaritoMedium',
-                          fontSize: 14,
+                          fontFamily: 'Gabarito',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
@@ -102,11 +106,25 @@ class AddScheduleScreen extends StatelessWidget {
                             children: const [
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16),
-                                child: Text('AM'),
+                                child: Text(
+                                  'AM',
+                                  style: TextStyle(
+                                    fontFamily: 'Gabarito',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                  ),
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16),
-                                child: Text('PM'),
+                                child: Text(
+                                  'PM',
+                                  style: TextStyle(
+                                    fontFamily: 'Gabarito',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                  ),
+                                ),
                               ),
                             ],
                             onPressed: (index) {},
@@ -117,8 +135,9 @@ class AddScheduleScreen extends StatelessWidget {
                       const Text(
                         'Description',
                         style: TextStyle(
-                          fontFamily: 'GabaritoMedium',
-                          fontSize: 14,
+                          fontFamily: 'Gabarito',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
@@ -129,23 +148,27 @@ class AddScheduleScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 30),
                       Center(
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 48,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF00FFD1), Color(0xFF005DAA)],
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // todo: logic submit
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              backgroundColor: const Color(0xFF00C897),
+                              foregroundColor: Colors.white,
                             ),
-                          ),
-                          child: TextButton(
-                            onPressed: () {},
                             child: const Text(
                               'Add Schedule',
                               style: TextStyle(
-                                fontFamily: 'GabaritoSemiBold',
+                                fontFamily: 'Gabarito',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 16,
-                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -198,7 +221,7 @@ class CustomTextField extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: const TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
           border: InputBorder.none,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 10),

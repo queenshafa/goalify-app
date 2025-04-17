@@ -6,22 +6,39 @@ class OptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0E0B36),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: const BackButton(color: Colors.white),
         title: const Text(
           'Schedule & Goals',
           style: TextStyle(
-            fontFamily: 'GabaritoBold',
+            fontSize: 20,
+            fontFamily: 'Gabarito',
+            fontWeight: FontWeight.w400,
             color: Colors.white,
           ),
         ),
+        backgroundColor: const Color(0xff3A3393),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      body: Center(
+      body: Container(
+        padding: const EdgeInsets.symmetric(vertical: 100),
+        alignment: Alignment.center,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xff3F369A), Color(0xff070942)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         child: Container(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
+          width: 370,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
             color: const Color(0xFF1C1A57),
@@ -34,7 +51,8 @@ class OptionScreen extends StatelessWidget {
                 'Choose One',
                 style: TextStyle(
                   fontSize: 18,
-                  fontFamily: 'GabaritoSemiBold',
+                  fontFamily: 'Gabarito',
+                  fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
               ),
@@ -53,7 +71,8 @@ class OptionScreen extends StatelessWidget {
                 child: const Text(
                   'Add Schedule',
                   style: TextStyle(
-                    fontFamily: 'GabaritoMedium',
+                    fontFamily: 'Gabarito',
+                    fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: Colors.white,
                   ),
@@ -69,12 +88,13 @@ class OptionScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  minimumSize: const Size(180, 48),
+                  minimumSize: const Size(260, 48),
                 ),
                 child: const Text(
                   'Add Goals',
                   style: TextStyle(
-                    fontFamily: 'GabaritoMedium',
+                    fontFamily: 'Gabarito',
+                    fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: Colors.white,
                   ),

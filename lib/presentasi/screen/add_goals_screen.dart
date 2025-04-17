@@ -174,10 +174,15 @@ class AddGoalsScreen extends StatelessWidget {
           border: Border.all(color: Colors.white.withOpacity(0.5), width: 1),
         ),
         child: TextField(
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+            fontFamily: 'Gabarito',
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+            color: Colors.white,
+          ),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: Colors.white),
+            hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
             border: InputBorder.none,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
@@ -224,7 +229,7 @@ class CustomTextField extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: const TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
           border: InputBorder.none,
           contentPadding:
               const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
