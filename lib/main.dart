@@ -11,6 +11,7 @@ import 'package:goalify/presentasi/screen/home_screen.dart';
 import 'package:goalify/presentasi/screen/onboarding_screen.dart';
 import 'package:goalify/presentasi/screen/option_screen.dart';
 import 'package:goalify/presentasi/screen/profile_screen.dart';
+import 'package:goalify/presentasi/screen/schedule_detail_screen.dart';
 import 'package:goalify/presentasi/screen/sign_in_screen.dart';
 import 'package:goalify/presentasi/screen/sign_up_screen.dart';
 import 'package:goalify/presentasi/screen/splash_screen.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         '/options': (context) => const OptionScreen(),
         '/addSchedule': (context) => const AddScheduleScreen(),
         '/addGoals': (context) => const AddGoalsScreen(),
+        '/scheduleDetail': (context) => const ScheduleDetailScreen(),
         '/mainLayout': (context) => const NavBar()
       },
     );
