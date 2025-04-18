@@ -152,9 +152,7 @@ class DotIndicator extends StatelessWidget {
       height: 8,
       width: isActive ? 36 : 8,
       decoration: BoxDecoration(
-          color: isActive
-              ? ColorConstant.colorWhite
-              : ColorConstant.colorWhite.withOpacity(0.5),
+          color: isActive ? Colors.white : Colors.white.withOpacity(0.5),
           borderRadius: const BorderRadius.all(Radius.circular(12))),
     );
   }
@@ -223,7 +221,7 @@ class OnboardContent extends StatelessWidget {
                 fontFamily: 'Gabarito',
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
-                color: ColorConstant.colorWhite),
+                color: Colors.white),
           ),
         ),
         const SizedBox(
@@ -238,7 +236,7 @@ class OnboardContent extends StatelessWidget {
               fontFamily: 'Gabarito',
               fontWeight: FontWeight.w400,
               fontSize: 16,
-              color: ColorConstant.colorWhite,
+              color: Colors.white,
             ),
           ),
         ),
