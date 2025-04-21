@@ -32,14 +32,12 @@ class ScheduleGoalsScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.add, size: 30, color: Colors.white),
             onPressed: () {
-              // Aksi saat tombol add ditekan
+              Navigator.pushNamed(context, '/options');
             },
           ),
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.all(20),
-        width: 370,
         alignment: Alignment.center,
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -84,7 +82,7 @@ class ScheduleGoalsScreen extends StatelessWidget {
                 _buildGoalItem(),
                 _buildGoalItem(),
                 _buildGoalItem(),
-                const SizedBox(height: 32),
+                const SizedBox(height: 50),
               ],
             ),
           ),
@@ -141,9 +139,7 @@ class ScheduleGoalsScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.arrow_forward_ios,
                 color: Colors.white, size: 25),
-            onPressed: () {
-              // Aksi saat tombol detail ditekan
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -162,7 +158,6 @@ class ScheduleGoalsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Title & Date
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -254,8 +249,8 @@ class ScheduleGoalsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.white30),
                 ),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Text(
                       "8 Sub tasks",
                       style: TextStyle(
