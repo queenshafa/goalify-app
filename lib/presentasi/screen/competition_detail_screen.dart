@@ -11,6 +11,7 @@ class CompetitionDetailScreen extends StatefulWidget {
 
 class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
   bool isExpanded = false;
+  bool _showFullTimeline = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
         width: double.infinity,
         decoration: _buildBackgroundGradient(),
         child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
             children: [
-              const SizedBox(height: 30),
               _buildImageBanner(),
               const SizedBox(height: 20),
               _buildRegistrationInfo(),
@@ -114,38 +115,10 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
   }
 
   Widget _buildDescription() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.all(14),
-      width: 370,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
-        border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Description',
-            style: TextStyle(
-              fontFamily: 'Gabarito',
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(height: 5),
-          Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
-            style: TextStyle(
-              fontFamily: 'Gabarito',
-              fontSize: 13,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
+    return _sectionContainer(
+      title: 'Description',
+      content:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
     );
   }
 
@@ -193,129 +166,15 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
         ),
         if (isExpanded) ...[
           const SizedBox(height: 8),
-          _categoryItem('UI/UX Application', 'Middle School'),
-          _categoryItem('Web Design', 'High School'),
-          _categoryItem('Design Poster', 'High School'),
+          _buildCategoryItem('UI/UX Application', 'Middle School'),
+          _buildCategoryItem('Web Design', 'High School'),
+          _buildCategoryItem('Design Poster', 'High School'),
         ],
       ],
     );
   }
 
-  Widget _buildGuidebookSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _guidebookHeader(),
-        _guidebookLink(),
-      ],
-    );
-  }
-
-  bool _showFullTimeline = false; // simpan di state class
-
-  Widget _buildTimelineSection() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      width: 370,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _timelineItem(
-            title: 'Registration Deadline',
-            date: '24 March 2025',
-            previousDate: '24 April 2025',
-            isLast: false,
-          ),
-          _timelineItem(
-            title: 'Project Submission Deadline',
-            date: '30 March 2025',
-            previousDate: '24 March 2025',
-            isLast: !_showFullTimeline,
-          ),
-          Visibility(
-            visible: _showFullTimeline,
-            child: Column(
-              children: [
-                _timelineItem(
-                  title: 'Final Announcement',
-                  date: '01 May 2025',
-                  previousDate: '30 March 2025',
-                  isLast: false,
-                ),
-                _timelineItem(
-                  title: 'Offline Final Round',
-                  date: '02 May 2025',
-                  previousDate: '01 May 2025',
-                  isLast: false,
-                ),
-                _timelineItem(
-                  title: 'Winner Announcement',
-                  date: '20 May 2025',
-                  previousDate: '12 May 2025',
-                  isLast: true,
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white.withOpacity(0.4),
-              minimumSize: const Size(370, 50),
-              side: BorderSide(color: Colors.white.withOpacity(0.5)),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            onPressed: () {
-              setState(() {
-                _showFullTimeline = !_showFullTimeline;
-              });
-            },
-            child: Text(
-              _showFullTimeline ? 'Hide Detail' : 'Timeline Detail',
-              style: const TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildRegisterButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xff2A2579),
-        side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
-        minimumSize: const Size(370, 60),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
-      ),
-      onPressed: () {
-        Navigator.pushNamed(context, '/registration');
-      },
-      child: const Text(
-        'Register Now!',
-        style: TextStyle(
-          fontFamily: 'Gabarito',
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-
-  BoxDecoration _glassCardDecoration() {
-    return BoxDecoration(
-      color: Colors.white.withOpacity(0.1),
-      border: Border.all(color: Colors.white.withOpacity(0.5)),
-      borderRadius: BorderRadius.circular(10),
-    );
-  }
-
-  Widget _categoryItem(String title, String level) {
+  Widget _buildCategoryItem(String title, String level) {
     return Container(
       width: 370,
       margin: const EdgeInsets.symmetric(vertical: 6),
@@ -346,79 +205,124 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
     );
   }
 
-  Widget _guidebookHeader() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      width: 370,
-      height: 40,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            const Color(0xFFFFFFFF).withOpacity(0.1),
-            const Color(0xFF8D4F70),
-          ],
-        ),
-        border: Border.all(color: Colors.white.withOpacity(0.7), width: 2),
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
-        ),
-      ),
-      child: const Row(
-        children: [
-          Icon(Icons.link, color: Colors.white),
-          SizedBox(width: 10),
-          Text(
-            'Guide Book Link',
-            style: TextStyle(
-              fontFamily: 'Gabarito',
-              fontSize: 15,
-              color: Colors.white,
+  Widget _buildGuidebookSection() {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          width: 370,
+          height: 40,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color(0xFFFFFFFF).withOpacity(0.1),
+                const Color(0xFF8D4F70),
+              ],
+            ),
+            border: Border.all(color: Colors.white.withOpacity(0.7), width: 2),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
             ),
           ),
+          child: const Row(
+            children: [
+              Icon(Icons.link, color: Colors.white),
+              SizedBox(width: 10),
+              Text(
+                'Guide Book Link',
+                style: TextStyle(
+                  fontFamily: 'Gabarito',
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: 370,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.white.withOpacity(0.7), width: 2),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+          child: Center(
+            child: InkWell(
+              onTap: () async {
+                final url = Uri.parse('https://s.id/ICOMFESTGUIDEBOOK');
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+              child: const Text(
+                's.id/ICOMFESTGUIDEBOOK',
+                style: TextStyle(
+                  fontFamily: 'Gabarito',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTimelineSection() {
+    return Container(
+      width: 370,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTimelineItem(
+            title: 'Registration Deadline',
+            date: '24 March 2025',
+            previousDate: '24 April 2025',
+            isLast: false,
+          ),
+          _buildTimelineItem(
+            title: 'Project Submission Deadline',
+            date: '30 March 2025',
+            previousDate: '24 March 2025',
+            isLast: !_showFullTimeline,
+          ),
+          if (_showFullTimeline) ...[
+            _buildTimelineItem(
+              title: 'Final Announcement',
+              date: '01 May 2025',
+              previousDate: '30 March 2025',
+              isLast: false,
+            ),
+            _buildTimelineItem(
+              title: 'Offline Final Round',
+              date: '02 May 2025',
+              previousDate: '01 May 2025',
+              isLast: false,
+            ),
+            _buildTimelineItem(
+              title: 'Winner Announcement',
+              date: '20 May 2025',
+              previousDate: '12 May 2025',
+              isLast: true,
+            ),
+          ],
+          const SizedBox(height: 20),
+          _buildTimelineToggleButton(),
         ],
       ),
     );
   }
 
-  Widget _guidebookLink() {
-    return Container(
-      alignment: Alignment.center,
-      width: 370,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.white.withOpacity(0.7), width: 2),
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(10),
-        ),
-      ),
-      child: Center(
-        child: InkWell(
-          child: const Text(
-            's.id/ICOMFESTGUIDEBOOK',
-            style: TextStyle(
-              fontFamily: 'Gabarito',
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
-          onTap: () async {
-            final url = Uri.parse('https://s.id/ICOMFESTGUIDEBOOK');
-            if (await canLaunchUrl(url)) {
-              await launchUrl(url, mode: LaunchMode.externalApplication);
-            } else {
-              throw 'Could not launch $url';
-            }
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget _timelineItem({
+  Widget _buildTimelineItem({
     required String title,
     required String date,
     required String previousDate,
@@ -487,6 +391,90 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
           const SizedBox(height: 20),
         ],
       ],
+    );
+  }
+
+  Widget _buildTimelineToggleButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white.withOpacity(0.4),
+        minimumSize: const Size(370, 50),
+        side: BorderSide(color: Colors.white.withOpacity(0.5)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onPressed: () => setState(() => _showFullTimeline = !_showFullTimeline),
+      child: Text(
+        _showFullTimeline ? 'Hide Detail' : 'Timeline Detail',
+        style: const TextStyle(fontSize: 18, color: Colors.white),
+      ),
+    );
+  }
+
+  Widget _buildRegisterButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xff2A2579),
+        side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
+        minimumSize: const Size(370, 60),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
+      onPressed: () => Navigator.pushNamed(context, '/registration'),
+      child: const Text(
+        'Register Now!',
+        style: TextStyle(
+          fontFamily: 'Gabarito',
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  Widget _sectionContainer({required String title, required String content}) {
+    return Container(
+      width: 370,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.2),
+        border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'Gabarito',
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 5),
+          Text(
+            content,
+            style: const TextStyle(
+              fontFamily: 'Gabarito',
+              fontSize: 13,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  BoxDecoration _glassCardDecoration() {
+    return BoxDecoration(
+      color: Colors.white.withOpacity(0.1),
+      border: Border.all(color: Colors.white.withOpacity(0.5)),
+      borderRadius: BorderRadius.circular(10),
     );
   }
 }

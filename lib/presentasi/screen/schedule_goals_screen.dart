@@ -16,6 +16,7 @@ class ScheduleGoalsScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        automaticallyImplyLeading: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
