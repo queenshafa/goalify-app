@@ -67,8 +67,16 @@ class ScheduleGoalsScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                _buildScheduleItem(),
-                _buildScheduleItem(),
+                _buildScheduleItem(
+                  title: "Design Review",
+                  time: "10:00AM - 11:00AM",
+                  description: "Finalizing UI/UX before launch",
+                ),
+                _buildScheduleItem(
+                  title: "Team Standup",
+                  time: "1:00PM - 1:30PM",
+                  description: "Daily sync-up with development team",
+                ),
                 const SizedBox(height: 24),
                 const Text(
                   "Your Goals",
@@ -80,9 +88,25 @@ class ScheduleGoalsScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                _buildGoalItem(),
-                _buildGoalItem(),
-                _buildGoalItem(),
+                _buildGoalItem(
+                    title: 'Personal Branding',
+                    description: 'Creating Personal Branding for my future',
+                    dateRange: '1 Jan - 28 Dec',
+                    progress: 0.35,
+                    subTasks: 10),
+                _buildGoalItem(
+                  title: "Finish Landing Page",
+                  description: "Implement UI and animation for homepage",
+                  dateRange: "15 Apr - 30 Apr",
+                  progress: 0.6,
+                  subTasks: 5,
+                ),
+                _buildGoalItem(
+                    title: 'Portfolio',
+                    description: 'Finishing Portfolio',
+                    dateRange: '4 August - 28 August',
+                    progress: 0.7,
+                    subTasks: 10),
                 const SizedBox(height: 50),
               ],
             ),
@@ -92,7 +116,11 @@ class ScheduleGoalsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildScheduleItem() {
+  Widget _buildScheduleItem({
+    required String title,
+    required String time,
+    required String description,
+  }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
@@ -107,9 +135,9 @@ class ScheduleGoalsScreen extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Lorem Ipsum Meeting",
-                style: TextStyle(
+              Text(
+                title,
+                style: const TextStyle(
                   fontFamily: "Gabarito",
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
@@ -118,7 +146,7 @@ class ScheduleGoalsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                "1:00PM - 2:20PM",
+                time,
                 style: TextStyle(
                   fontFamily: "Gabarito",
                   fontWeight: FontWeight.w500,
@@ -126,9 +154,9 @@ class ScheduleGoalsScreen extends StatelessWidget {
                   color: Colors.white.withOpacity(0.5),
                 ),
               ),
-              const Text(
-                "Discussing about PPN 12% in 2027",
-                style: TextStyle(
+              Text(
+                description,
+                style: const TextStyle(
                   fontFamily: "Gabarito",
                   fontWeight: FontWeight.w500,
                   fontSize: 14,
@@ -147,7 +175,13 @@ class ScheduleGoalsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGoalItem() {
+  Widget _buildGoalItem({
+    required String title,
+    required String description,
+    required String dateRange,
+    required double progress,
+    required int subTasks,
+  }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
@@ -162,9 +196,9 @@ class ScheduleGoalsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "UJIKOM Discussion",
-                style: TextStyle(
+              Text(
+                title,
+                style: const TextStyle(
                   fontFamily: "Gabarito",
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -178,9 +212,9 @@ class ScheduleGoalsScreen extends StatelessWidget {
                   color: Colors.white.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
-                  "1 Jan - 28 Dec",
-                  style: TextStyle(
+                child: Text(
+                  dateRange,
+                  style: const TextStyle(
                     fontFamily: "Gabarito",
                     fontSize: 12,
                     color: Colors.white,
@@ -190,9 +224,9 @@ class ScheduleGoalsScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          const Text(
-            "Discussing about UJIKOM Timeline in 2027",
-            style: TextStyle(
+          Text(
+            description,
+            style: const TextStyle(
               fontFamily: "Gabarito",
               fontSize: 14,
               color: Colors.white70,
@@ -203,7 +237,6 @@ class ScheduleGoalsScreen extends StatelessWidget {
           // Progress Bar
           LayoutBuilder(
             builder: (context, constraints) {
-              double progress = 0.35;
               return Stack(
                 children: [
                   Container(
@@ -223,9 +256,9 @@ class ScheduleGoalsScreen extends StatelessWidget {
                     ),
                     alignment: Alignment.centerLeft,
                     padding: const EdgeInsets.only(left: 12),
-                    child: const Text(
-                      "35%",
-                      style: TextStyle(
+                    child: Text(
+                      "${(progress * 100).toInt()}%",
+                      style: const TextStyle(
                         fontFamily: "Gabarito",
                         fontSize: 12,
                         color: Colors.black,
@@ -250,18 +283,18 @@ class ScheduleGoalsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.white30),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
                     Text(
-                      "8 Sub tasks",
-                      style: TextStyle(
+                      "$subTasks Sub tasks",
+                      style: const TextStyle(
                         fontFamily: "Gabarito",
                         fontSize: 14,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 6),
-                    Icon(Icons.keyboard_arrow_down, color: Colors.white),
+                    const SizedBox(width: 6),
+                    const Icon(Icons.keyboard_arrow_down, color: Colors.white),
                   ],
                 ),
               ),
@@ -274,9 +307,7 @@ class ScheduleGoalsScreen extends StatelessWidget {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.delete, color: Colors.white),
-                      onPressed: () {
-                        // Delete action
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -287,9 +318,7 @@ class ScheduleGoalsScreen extends StatelessWidget {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.check, color: Colors.white),
-                      onPressed: () {
-                        // Check action
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ],

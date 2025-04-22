@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goalify/presentasi/widget/custom_text_field.dart';
+import 'package:goalify/presentasi/widget/custom_text_box.dart'; // pastikan path sesuai
 
 class CompetitionRegistration extends StatefulWidget {
   const CompetitionRegistration({super.key});
@@ -11,164 +11,43 @@ class CompetitionRegistration extends StatefulWidget {
 
 class _CompetitionRegistrationState extends State<CompetitionRegistration> {
   bool isExpanded = false;
-  bool isChecked = false;
+  bool isCheckedRules = false;
+  bool isCheckedConfirm = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Registration',
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Gabarito',
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: const Color(0xff3A3393),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new_outlined,
-            color: Colors.white,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: _buildAppBar(context),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
         width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xff3F369A), Color(0xff070942)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
+        decoration: _buildBackgroundGradient(),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
         child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Full Name',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gabarito',
-                    color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              const CustomTextField(
-                  hintText: 'Your name..', icon: Icons.person),
+              ..._buildTextFields(),
               const SizedBox(height: 24),
-              const Text(
-                'Instances',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gabarito',
-                    color: Colors.white),
+              _buildLabel('Competition Category'),
+              const SizedBox(height: 8),
+              _buildCategoryDropdown(), // TODO: fix dropdown
+              const SizedBox(height: 12),
+              _buildCheckbox(
+                value: isCheckedConfirm,
+                onChanged: (val) => setState(() => isCheckedConfirm = val!),
+                text:
+                    'I declare that all the information provided is true and accurate.',
               ),
               const SizedBox(height: 8),
-              const CustomTextField(
-                  hintText: 'Your instances..', icon: Icons.school),
-              const SizedBox(height: 24),
-              const Text(
-                'Grade/Class',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gabarito',
-                    color: Colors.white),
+              _buildCheckbox(
+                value: isCheckedRules,
+                onChanged: (val) => setState(() => isCheckedRules = val!),
+                text:
+                    'I agree to follow all the rules and requirements set by the committee.',
               ),
-              const SizedBox(height: 8),
-              const CustomTextField(
-                  hintText: 'Your grade/class..', icon: Icons.category),
-              const SizedBox(height: 24),
-              const Text(
-                'Active WhatsApp/Phone Number',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gabarito',
-                    color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              const CustomTextField(
-                  hintText: 'Your WhatsApp/Phone number..',
-                  icon: Icons.phone_android),
-              const SizedBox(height: 24),
-              const Text(
-                'Active Email Address',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gabarito',
-                    color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              const CustomTextField(
-                  hintText: 'Your email address..', icon: Icons.email),
-              const SizedBox(height: 24),
-              const Text(
-                'Competition Category',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Gabarito',
-                    color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              _buildCategorySection(),
-              const SizedBox(
-                height: 12,
-              ),
-              Row(
-                children: [
-                  Checkbox(
-                      value: isChecked,
-                      activeColor: Colors.purple,
-                      onChanged: (newBool) {
-                        setState(() {
-                          isChecked = newBool!;
-                        });
-                      }),
-                  const Text(
-                    ' I declare that all the information provided is true and\naccurate.',
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Gabarito',
-                        color: Colors.white),
-                  )
-                ],
-              ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Checkbox(
-                      value: isChecked,
-                      activeColor: Colors.purple,
-                      onChanged: (newBool) {
-                        setState(() {
-                          isChecked = newBool!;
-                        });
-                      }),
-                  const Text(
-                    'I agree to follow all the rules and requirements set by the\ncommittee.',
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Gabarito',
-                        color: Colors.white),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              _buildRegisterButton()
+              const SizedBox(height: 50),
+              _buildRegisterButton(),
+              const SizedBox(height: 50),
             ],
           ),
         ),
@@ -176,18 +55,80 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
     );
   }
 
-  Widget _buildCategorySection() {
+  // ---------- UI Sections ----------
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      title: const Text(
+        'Registration',
+        style: TextStyle(
+          fontSize: 20,
+          fontFamily: 'Gabarito',
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
+        ),
+      ),
+      backgroundColor: const Color(0xff3A3393),
+      leading: IconButton(
+        icon:
+            const Icon(Icons.arrow_back_ios_new_outlined, color: Colors.white),
+        onPressed: () => Navigator.pop(context),
+      ),
+    );
+  }
+
+  BoxDecoration _buildBackgroundGradient() {
+    return const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xff3F369A), Color(0xff070942)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+    );
+  }
+
+  List<Widget> _buildTextFields() {
+    return [
+      _buildLabel('Full Name'),
+      const CustomTextBox(hintText: 'Your name..'),
+      const SizedBox(height: 24),
+      _buildLabel('Instances'),
+      const CustomTextBox(hintText: 'Your instances..'),
+      const SizedBox(height: 24),
+      _buildLabel('Grade/Class'),
+      const CustomTextBox(hintText: 'Your grade/class..'),
+      const SizedBox(height: 24),
+      _buildLabel('Active WhatsApp/Phone Number'),
+      const CustomTextBox(hintText: 'Your WhatsApp/Phone number..'),
+      const SizedBox(height: 24),
+      _buildLabel('Active Email Address'),
+      const CustomTextBox(hintText: 'Your email address..'),
+    ];
+  }
+
+  Widget _buildLabel(String text) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'Gabarito',
+        color: Colors.white,
+      ),
+    );
+  }
+
+  Widget _buildCategoryDropdown() {
     return Column(
       children: [
         GestureDetector(
           onTap: () => setState(() => isExpanded = !isExpanded),
           child: Container(
-            width: 370,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xff8C93FB), width: 1),
+              border: Border.all(color: Colors.white.withOpacity(0.5)),
               borderRadius: BorderRadius.circular(30),
-              color: Colors.white.withOpacity(0.3),
+              color: const Color(0xff372563).withOpacity(0.5),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -223,7 +164,6 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
 
   Widget _categoryItem(String title, String level) {
     return Container(
-      width: 370,
       margin: const EdgeInsets.symmetric(vertical: 6),
       padding: const EdgeInsets.all(12),
       decoration: _glassCardDecoration(),
@@ -252,6 +192,58 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
     );
   }
 
+  Widget _buildCheckbox({
+    required bool value,
+    required String text,
+    required Function(bool?) onChanged,
+  }) {
+    return Row(
+      children: [
+        Checkbox(
+          value: value,
+          activeColor: Colors.purple,
+          onChanged: onChanged,
+        ),
+        Expanded(
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Gabarito',
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRegisterButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xff2A2579),
+        side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
+        minimumSize: const Size(double.infinity, 60),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
+      onPressed: () {
+        // Handle registration action
+      },
+      child: const Text(
+        'Register Now!',
+        style: TextStyle(
+          fontFamily: 'Gabarito',
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
   BoxDecoration _glassCardDecoration() {
     return BoxDecoration(
       color: Colors.white.withOpacity(0.1),
@@ -259,27 +251,4 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
       borderRadius: BorderRadius.circular(10),
     );
   }
-}
-
-Widget _buildRegisterButton() {
-  return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xff2A2579),
-      side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
-      minimumSize: const Size(370, 60),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50),
-      ),
-    ),
-    onPressed: () {},
-    child: const Text(
-      'Register Now!',
-      style: TextStyle(
-        fontFamily: 'Gabarito',
-        fontSize: 17,
-        fontWeight: FontWeight.w600,
-        color: Colors.white,
-      ),
-    ),
-  );
 }

@@ -11,12 +11,14 @@ class SplashScreen extends StatelessWidget {
     // }); //
     return Material(
       child: Container(
+          width: double.infinity,
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Color(0xff343075), Color(0xff615ADB)],
-                  stops: [0.38, 0.95],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight)),
+            gradient: LinearGradient(
+              colors: [Color(0xff3F369A), Color(0xff070942)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
           child: Column(
             children: [
               const SizedBox(
@@ -29,11 +31,11 @@ class SplashScreen extends StatelessWidget {
                 height: 280,
               ),
               const Text(
-                'ajkndjnj',
+                'Let your goals roar louder than your fears!',
                 style: TextStyle(
                   fontFamily: 'Gabarito',
                   fontWeight: FontWeight.w600,
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Colors.white,
                 ),
               )

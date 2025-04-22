@@ -18,6 +18,7 @@ class EventScreen extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: Colors.white),
         ),
+        automaticallyImplyLeading: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
