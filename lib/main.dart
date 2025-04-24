@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         '/competitionDetailScreen': (context) =>
             const CompetitionDetailScreen(),
         '/registration': (context) => const CompetitionRegistration(),
-        '/eventScreen': (context) => const EventScreen(),
+        '/eventScreen': (context) => EventScreen(),
         '/detail': (context) => const EventDetailScreen(),
         '/profile': (context) => const ProfileScreen(),
         '/mainLayout': (context) => const NavBar()

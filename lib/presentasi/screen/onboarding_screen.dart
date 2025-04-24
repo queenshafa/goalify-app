@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:goalify/presentasi/screen/home_screen.dart';
-import 'package:goalify/utils/color_constant.dart';
+// import 'package:goalify/utils/color_constant.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

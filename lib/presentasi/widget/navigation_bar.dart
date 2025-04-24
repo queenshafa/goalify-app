@@ -21,7 +21,7 @@ class _NavBarState extends State<NavBar> {
     const HomeScreen(),
     const ScheduleGoalsScreen(),
     const CompetitionScreen(),
-    const EventScreen(),
+    EventScreen(),
     const ProfileScreen()
     // Tambahin Goals dan Profile kalo udah ada
   ];

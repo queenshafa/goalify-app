@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:goalify/presentasi/widget/event_card';
+import 'package:goalify/data/event_data.dart';
+import 'package:goalify/presentasi/widget/event_card.dart';
 import 'package:goalify/presentasi/widget/filter_button.dart';
 
 class EventScreen extends StatelessWidget {
-  const EventScreen({super.key});
+  final List<Map<String, String>> allEvents = [
+    ...getDataEvents("INTI Universe 2025"),
+    ...getDataEvents("CSID 2025"),
+    ...getDataEvents("DTI-CX 2025"),
+    ...getDataEvents("TECH 2025"),
+    ...getDataEvents("IDTEx 2025"),
+  ];
+  EventScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -111,41 +119,19 @@ class EventScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              const EventCard(
-                imagePath: 'assets/images/ic_icomfest.png',
-                title: 'Google Developer Groups',
-                description: 'General',
-                price: 'Free',
-                date: '26 Januari, 2025',
-                location: 'Bekasi',
-              ),
-              const SizedBox(height: 10),
-              const EventCard(
-                imagePath: 'assets/images/ic_icomfest.png',
-                title: 'Google Developer Groups',
-                description: 'General',
-                price: 'Free',
-                date: '26 Januari, 2025',
-                location: 'Bekasi',
-              ),
-              const SizedBox(height: 10),
-              const EventCard(
-                imagePath: 'assets/images/ic_icomfest.png',
-                title: 'Google Developer Groups',
-                description: 'General',
-                price: 'Free',
-                date: '26 Januari, 2025',
-                location: 'Bekasi',
-              ),
-              const SizedBox(height: 10),
-              const EventCard(
-                imagePath: 'assets/images/ic_icomfest.png',
-                title: 'Google Developer Groups',
-                description: 'General',
-                price: 'Free',
-                date: '26 Januari, 2025',
-                location: 'Bekasi',
-              ),
+              ...allEvents.map((event) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: EventCard(
+                    imagePath: event['image'] ?? '',
+                    title: event['title'] ?? '',
+                    description: 'General',
+                    price: 'Free',
+                    date: event['Event date'] ?? '',
+                    location: event['address'] ?? '',
+                  ),
+                );
+              }).toList(),
               const SizedBox(
                 height: 100,
               )
