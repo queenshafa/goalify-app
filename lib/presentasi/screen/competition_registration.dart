@@ -30,7 +30,7 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
               const SizedBox(height: 24),
               _buildLabel('Competition Category'),
               const SizedBox(height: 8),
-              _buildCategoryDropdown(), // TODO: fix dropdown
+              _buildCategoryDropdown(),
               const SizedBox(height: 12),
               _buildCheckbox(
                 value: isCheckedConfirm,
@@ -164,6 +164,7 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
 
   Widget _categoryItem(String title, String level) {
     return Container(
+      width: 400,
       margin: const EdgeInsets.symmetric(vertical: 6),
       padding: const EdgeInsets.all(12),
       decoration: _glassCardDecoration(),

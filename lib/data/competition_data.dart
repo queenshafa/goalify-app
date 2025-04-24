@@ -16,7 +16,7 @@ List<Map<String, String>> getDataCompetitions(String category) {
     case "Hackaton 10":
       return [
         {
-          'image': 'assets/images/hackathon 10_competitions.png',
+          'image': 'assets/images/hackathon10_competitions.png',
           'title': 'Hackathon 10',
           'deadline': 'July 9-10, 2025',
           'timeline':
@@ -30,8 +30,8 @@ List<Map<String, String>> getDataCompetitions(String category) {
     case "MAPID WebGIS 2025":
       return [
         {
-          'image': 'assets/images/mapidwebgis_competitions.png',
-          'title': 'MAPID WebGIS 2025',
+          'image': 'assets/images/mapidwebgis_competition.png',
+          'title': 'MAPID WebGIS',
           'deadline': 'February 3, 2025',
           'timeline':
               'Pendaftaran & Pengumpulan Proposal: 7 Januari – 3 Februari 2025',
@@ -43,8 +43,8 @@ List<Map<String, String>> getDataCompetitions(String category) {
     case "TECHCOMFEST 2025":
       return [
         {
-          'image': 'assets/images/techcomfest_competitions.png',
-          'title': 'TECHCOMFEST 2025',
+          'image': 'assets/images/techcomfest_competition.png',
+          'title': 'TECHCOMFEST ',
           'deadline': '13 Desember, 2024',
           'timeline': 'Deadline: 13 Desember, 2024',
           'guidebook-link':

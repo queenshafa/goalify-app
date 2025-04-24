@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:goalify/data/competition_data.dart';
 
 class CompetitionScreen extends StatelessWidget {
   const CompetitionScreen({super.key});
@@ -144,16 +145,27 @@ class CompetitionScreen extends StatelessWidget {
   }
 
   Widget _buildCompetitionCards(BuildContext context) {
+    final competitionData = [
+      ...getDataCompetitions("WDC 2025"),
+      ...getDataCompetitions("Hackaton 10"),
+      ...getDataCompetitions("MAPID WebGIS 2025"),
+      ...getDataCompetitions("TECHCOMFEST 2025"),
+      ...getDataCompetitions("GENETIC 2025"),
+    ];
+
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(5, (index) => _buildCardItem(context)),
+        children: List.generate(
+          competitionData.length,
+          (index) => _buildCardItem(context, competitionData[index]),
+        ),
       ),
     );
   }
 
-  Widget _buildCardItem(BuildContext context) {
+  Widget _buildCardItem(BuildContext context, Map<String, String> data) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
@@ -170,11 +182,16 @@ class CompetitionScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset('assets/images/ic_icomfest.png'),
+            Image.asset(
+              data['image'] ?? '',
+              height: 140,
+              width: 140,
+              fit: BoxFit.cover,
+            ),
             const SizedBox(height: 10),
-            const Text(
-              'ICOMFEST 2025',
-              style: TextStyle(
+            Text(
+              data['title'] ?? '',
+              style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'Gabarito',
                 fontSize: 15,

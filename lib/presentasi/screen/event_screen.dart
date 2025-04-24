@@ -64,12 +64,22 @@ class EventScreen extends StatelessWidget {
                   viewportFraction: 0.6,
                 ),
                 items: List.generate(5, (index) {
+                  // Create a list of image paths
+                  List<String> imagePaths = [
+                    'assets/images/event_1.png',
+                    'assets/images/csid_events.png',
+                    'assets/images/dticx_events.png',
+                    'assets/images/inti_universe_events.png',
+                    'assets/images/tech2025_events.png',
+                  ];
+
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/event_1.png'),
+                          image: AssetImage(imagePaths[
+                              index]), // Use the index to select the correct image
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -122,13 +132,22 @@ class EventScreen extends StatelessWidget {
               ...allEvents.map((event) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: EventCard(
-                    imagePath: event['image'] ?? '',
-                    title: event['title'] ?? '',
-                    description: 'General',
-                    price: 'Free',
-                    date: event['Event date'] ?? '',
-                    location: event['address'] ?? '',
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/detail',
+                        arguments: event, // <- This sends the event
+                      );
+                    },
+                    child: EventCard(
+                      imagePath: event['image'] ?? '',
+                      title: event['title'] ?? '',
+                      description: 'General',
+                      price: 'Free',
+                      date: event['Event date'] ?? '',
+                      location: event['address'] ?? '',
+                    ),
                   ),
                 );
               }).toList(),

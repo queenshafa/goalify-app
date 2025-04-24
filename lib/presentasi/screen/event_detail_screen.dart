@@ -135,7 +135,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           ),
           SizedBox(height: 5),
           Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+            'The CyberSecIndonesia Conference 2025 (CSID 2025) is a premier cybersecurity event scheduled for July 9–10, 2025, in Jakarta. Organized by CyberSecAsia.org, it serves as a strategic platform for security professionals across various sectors in Indonesia to engage in in-depth discussions on the rapidly evolving cybersecurity landscape.',
             style: TextStyle(
               fontFamily: 'Gabarito',
               fontSize: 13,
@@ -192,8 +192,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         ),
         if (isExpanded) ...[
           const SizedBox(height: 8),
-          _locationDetail(
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy '),
+          _locationDetail('Ritz Carlton Pacific Place, Jakarta'),
         ],
       ],
     );

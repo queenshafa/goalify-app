@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goalify/data/competition_data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -553,116 +554,8 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                   ),
                   SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(5, (index) {
-                        // Bisa ubah jumlah card sesuai kebutuhan
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Container(
-                            width: 160,
-                            height: 280,
-                            padding: const EdgeInsets.all(10),
-                            alignment: Alignment.topCenter,
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.2),
-                                border: Border.all(
-                                    width: 2,
-                                    color: Colors.white.withOpacity(0.5)),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Column(
-                              children: [
-                                Image.asset('assets/images/ic_icomfest.png'),
-                                const SizedBox(height: 10),
-                                const Text(
-                                  'ICOMFEST 2025',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Gabarito',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xff33C2A4)
-                                              .withOpacity(0.3),
-                                          border: Border.all(
-                                            width: 2,
-                                            color:
-                                                Colors.white.withOpacity(0.5),
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      child: const Text(
-                                        'Free',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Gabarito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                          color: const Color(0xffFFFFFF)
-                                              .withOpacity(0.3),
-                                          border: Border.all(
-                                            width: 2,
-                                            color:
-                                                Colors.white.withOpacity(0.5),
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      child: const Text(
-                                        'IT',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Gabarito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 30),
-                                SizedBox(
-                                  width: 150,
-                                  height: 25,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                          context, '/competitionDetailScreen');
-                                    },
-                                    child: const Text(
-                                      "See more",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Gabarito',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
+                    child: _buildCompetitionCards(context),
                   ),
                   const SizedBox(
                     height: 30,
@@ -732,7 +625,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         const Image(
-                            image: AssetImage('assets/images/ic_icomfest.png')),
+                            image: AssetImage('assets/images/dticx_events.png')),
                         const SizedBox(
                           width: 15,
                         ),
@@ -825,4 +718,117 @@ class HomeScreen extends StatelessWidget {
           )),
     ));
   }
+}
+
+Widget _buildCompetitionCards(BuildContext context) {
+  final competitionData = [
+    ...getDataCompetitions("WDC 2025"),
+    ...getDataCompetitions("Hackaton 10"),
+    ...getDataCompetitions("MAPID WebGIS 2025"),
+    ...getDataCompetitions("TECHCOMFEST 2025"),
+    ...getDataCompetitions("GENETIC 2025"),
+  ];
+
+  return SingleChildScrollView(
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+    scrollDirection: Axis.horizontal,
+    child: Row(
+      children: List.generate(
+        competitionData.length,
+        (index) => _buildCardItem(context, competitionData[index]),
+      ),
+    ),
+  );
+}
+
+Widget _buildCardItem(BuildContext context, Map<String, String> data) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    child: Container(
+      width: 160,
+      height: 280,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.2),
+        border: Border.all(
+          width: 2,
+          color: Colors.white.withOpacity(0.5),
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          Image.asset(
+            data['image'] ?? '',
+            height: 140,
+            width: 140,
+            fit: BoxFit.cover,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            data['title'] ?? '',
+            style: const TextStyle(
+              color: Colors.white,
+              fontFamily: 'Gabarito',
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 5),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildTag('Free', const Color(0xff33C2A4)),
+              const SizedBox(width: 5),
+              _buildTag('IT', const Color(0xffFFFFFF)),
+            ],
+          ),
+          const SizedBox(height: 30),
+          SizedBox(
+            width: 150,
+            height: 25,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/competitionDetailScreen');
+              },
+              child: const Text(
+                "See more",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Gabarito',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _buildTag(String label, Color color) {
+  return Container(
+    alignment: Alignment.center,
+    width: label == 'Free' ? 50 : 30,
+    decoration: BoxDecoration(
+      color: color.withOpacity(0.3),
+      border: Border.all(
+        width: 2,
+        color: Colors.white.withOpacity(0.5),
+      ),
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: Text(
+      label,
+      style: const TextStyle(
+        color: Colors.white,
+        fontFamily: 'Gabarito',
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+  );
 }

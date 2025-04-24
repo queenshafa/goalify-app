@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:goalify/presentasi/screen/competition_screen.dart';
 import 'package:goalify/presentasi/screen/event_screen.dart';
-import 'package:goalify/presentasi/screen/home.dart';
 import 'package:goalify/presentasi/screen/home_screen.dart';
 import 'package:goalify/presentasi/screen/profile_screen.dart';
 import 'package:goalify/presentasi/screen/schedule_goals_screen.dart';
-import 'package:goalify/presentasi/screen/testhome.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});

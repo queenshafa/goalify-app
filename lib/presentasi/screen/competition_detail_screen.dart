@@ -118,7 +118,7 @@ class _CompetitionDetailScreenState extends State<CompetitionDetailScreen> {
     return _sectionContainer(
       title: 'Description',
       content:
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry...',
+          'Kompetisi pengembangan solusi WebGIS dengan tema “Land Transformation for a Sustainable Future”. Total hadiah Rp25 juta dan akses eksklusif senilai Rp1 miliar untuk pengembangan WebGIS.',
     );
   }
 
