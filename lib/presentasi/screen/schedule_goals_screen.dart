@@ -233,8 +233,6 @@ class ScheduleGoalsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-
-          // Progress Bar
           LayoutBuilder(
             builder: (context, constraints) {
               return Stack(
@@ -270,8 +268,6 @@ class ScheduleGoalsScreen extends StatelessWidget {
             },
           ),
           const SizedBox(height: 16),
-
-          // Subtasks + Actions
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

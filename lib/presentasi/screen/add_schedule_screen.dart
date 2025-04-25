@@ -152,9 +152,7 @@ class AddScheduleScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 48,
                           child: ElevatedButton(
-                            onPressed: () {
-                              // todo: logic submit
-                            },
+                            onPressed: () {},
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),

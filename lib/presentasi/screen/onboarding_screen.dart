@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:goalify/presentasi/screen/home_screen.dart';
-// import 'package:goalify/utils/color_constant.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -69,25 +66,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [
-                  Color(0xFF363686),
-                  Color(0xFF5353CE)
-                ], // Warna gradient
+                colors: [Color(0xFF363686), Color(0xFF5353CE)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              borderRadius:
-                  BorderRadius.circular(50), // Sesuaikan dengan tombol
+              borderRadius: BorderRadius.circular(50),
             ),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(345, 64),
-                backgroundColor:
-                    Colors.transparent, // Transparan agar gradient terlihat
-                shadowColor: Colors.transparent, // Hilangkan bayangan
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                      50), // Bentuk tombol sesuai Container
+                  borderRadius: BorderRadius.circular(50),
                 ),
               ),
               onPressed: () {

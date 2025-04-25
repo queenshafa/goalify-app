@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalify/data/competition_data.dart';
+import 'package:goalify/presentasi/widget/event_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -53,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Good Morning, User!',
+                            'Good Morning, Queenshafa!',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
@@ -134,162 +135,15 @@ class HomeScreen extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                width: 190,
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff343075),
-                                  border: Border.all(
-                                    color: Colors.white.withOpacity(0.6),
-                                    width: 1,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment
-                                      .start, // Rata kiri semua
-                                  children: [
-                                    Text(
-                                      'ICOMFEST 2025',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            12, // Besarin dikit biar sesuai referensi
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            5), // Jarak antara title dan deadline
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.circle,
-                                          color: Colors.red,
-                                          size:
-                                              10, // Biar lebih jelas tapi ga kegedean
-                                        ),
-                                        SizedBox(
-                                            width: 5), // Jarak icon ke teks
-                                        Text(
-                                          'Deadline: Monday, 02 Februari 2025',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                9, // Lebih kecil dari judul
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              _buildCompetitionList(),
                               const SizedBox(
                                 height: 10,
                               ),
-                              Container(
-                                width: 190,
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff343075),
-                                  border: Border.all(
-                                    color: Colors.white.withOpacity(0.6),
-                                    width: 1,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment
-                                      .start, // Rata kiri semua
-                                  children: [
-                                    Text(
-                                      'ICOMFEST 2025',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            12, // Besarin dikit biar sesuai referensi
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            5), // Jarak antara title dan deadline
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.circle,
-                                          color: Colors.red,
-                                          size:
-                                              10, // Biar lebih jelas tapi ga kegedean
-                                        ),
-                                        SizedBox(
-                                            width: 5), // Jarak icon ke teks
-                                        Text(
-                                          'Deadline: Monday, 02 Februari 2025',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                9, // Lebih kecil dari judul
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              _buildCompetitionList(),
                               const SizedBox(
                                 height: 10,
                               ),
-                              Container(
-                                width: 190,
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff343075),
-                                  border: Border.all(
-                                    color: Colors.white.withOpacity(0.6),
-                                    width: 1,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment
-                                      .start, // Rata kiri semua
-                                  children: [
-                                    Text(
-                                      'ICOMFEST 2025',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize:
-                                            12, // Besarin dikit biar sesuai referensi
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        height:
-                                            5), // Jarak antara title dan deadline
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.circle,
-                                          color: Colors.red,
-                                          size:
-                                              10, // Biar lebih jelas tapi ga kegedean
-                                        ),
-                                        SizedBox(
-                                            width: 5), // Jarak icon ke teks
-                                        Text(
-                                          'Deadline: Monday, 02 Februari 2025',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                9, // Lebih kecil dari judul
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              _buildCompetitionList(),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -297,7 +151,10 @@ class HomeScreen extends StatelessWidget {
                                 height: 25,
                                 width: 100,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, '/competitionScreen');
+                                  },
                                   child: const Text(
                                     "See more",
                                     style: TextStyle(
@@ -374,8 +231,8 @@ class HomeScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start, // Rata kiri semua
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'GDG Bogor 2025',
@@ -383,21 +240,16 @@ class HomeScreen extends StatelessWidget {
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 16,
-                                          fontFamily:
-                                              'Gabarito', // Besarin dikit biar sesuai referensi
+                                          fontFamily: 'Gabarito',
                                         ),
                                       ),
-                                      SizedBox(
-                                          height:
-                                              5), // Jarak antara title dan deadline// Jarak icon ke teks
+                                      SizedBox(height: 5),
                                       Text(
                                         'Time: 09:00',
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 14,
-                                            fontFamily:
-                                                'Gabarito' // Lebih kecil dari judul
-                                            ),
+                                            fontFamily: 'Gabarito'),
                                       ),
                                     ],
                                   ),
@@ -411,7 +263,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            // Container atas (judul)
                             Container(
                               alignment: Alignment.center,
                               width: 170,
@@ -440,8 +291,6 @@ class HomeScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
-
-                            // Container putih (angka 10%)
                             Container(
                               padding: const EdgeInsets.all(5),
                               alignment: Alignment.center,
@@ -464,12 +313,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-
-                            // Container bawah (hijau) DIPISAH
                             Container(
                               alignment: Alignment.center,
                               width: 170,
-                              height: 35, // Naik sedikit biar rapat
+                              height: 35,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -611,112 +458,67 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    width: 360,
-                    height: 90,
-                    alignment: Alignment.topRight,
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
-                        border: Border.all(
-                          width: 2,
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      children: [
-                        const Image(
-                            image: AssetImage('assets/images/dticx_events.png')),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Google Developer Groups',
-                              style: TextStyle(
-                                  color: Colors.white, fontFamily: 'Gabarito'),
-                            ),
-                            Text(
-                              'General',
-                              style: TextStyle(
-                                  color: Colors.white.withOpacity(0.6),
-                                  fontFamily: 'Gabarito',
-                                  fontSize: 12),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 100,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: const Text(
-                                    '26 Januari, 2025',
-                                    style: TextStyle(
-                                        fontSize: 12, fontFamily: 'Gabarito'),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 70,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                      color: const Color(0x00FFFFFF),
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                          color: Colors.white, width: 1)),
-                                  child: const Text(
-                                    'Bekasi',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.white,
-                                        fontFamily: 'Gabarito'),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          width: 60,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: const Color(0xff33C2A4).withOpacity(0.3),
-                            border: Border.all(
-                                color: Colors.white.withOpacity(0.5), width: 1),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Text(
-                            'Free',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontFamily: 'Gabarito'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  const EventCard(
+                      imagePath: 'assets/images/dticx_events.png',
+                      title: 'DTICX 2025',
+                      description: 'General',
+                      price: 'Free',
+                      date: '25 June 2025',
+                      location: 'Bekasi'),
                   const SizedBox(
                     height: 100,
                   )
                 ],
               ),
-              // const NavBar()
             ],
           )),
     ));
+  }
+
+  Container _buildCompetitionList() {
+    return Container(
+      width: 190,
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: const Color(0xff343075),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.6),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'ICOMFEST 2025',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+          ),
+          SizedBox(height: 5),
+          Row(
+            children: [
+              Icon(
+                Icons.circle,
+                color: Colors.red,
+                size: 10,
+              ),
+              SizedBox(width: 5),
+              Text(
+                'Deadline: Monday, 02 Februari 2025',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 9,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
 

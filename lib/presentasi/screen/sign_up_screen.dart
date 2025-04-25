@@ -161,8 +161,6 @@ class SignUpScreen extends StatelessWidget {
                                                       },
                                                       style: ElevatedButton
                                                           .styleFrom(
-                                                        // alignment:
-                                                        //     Alignment.center,
                                                         backgroundColor:
                                                             Colors.white,
                                                         shape:

@@ -26,7 +26,6 @@ class EventScreen extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: Colors.white),
         ),
-        automaticallyImplyLeading: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -64,7 +63,6 @@ class EventScreen extends StatelessWidget {
                   viewportFraction: 0.6,
                 ),
                 items: List.generate(5, (index) {
-                  // Create a list of image paths
                   List<String> imagePaths = [
                     'assets/images/event_1.png',
                     'assets/images/csid_events.png',
@@ -78,8 +76,7 @@ class EventScreen extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(imagePaths[
-                              index]), // Use the index to select the correct image
+                          image: AssetImage(imagePaths[index]),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -137,7 +134,7 @@ class EventScreen extends StatelessWidget {
                       Navigator.pushNamed(
                         context,
                         '/detail',
-                        arguments: event, // <- This sends the event
+                        arguments: event,
                       );
                     },
                     child: EventCard(
@@ -150,7 +147,7 @@ class EventScreen extends StatelessWidget {
                     ),
                   ),
                 );
-              }).toList(),
+              }),
               const SizedBox(
                 height: 100,
               )

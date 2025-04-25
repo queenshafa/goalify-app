@@ -6,16 +6,13 @@ import 'package:goalify/presentasi/screen/competition_registration.dart';
 import 'package:goalify/presentasi/screen/competition_screen.dart';
 import 'package:goalify/presentasi/screen/event_detail_screen.dart';
 import 'package:goalify/presentasi/screen/event_screen.dart';
-import 'package:goalify/presentasi/screen/home_screen.dart';
 import 'package:goalify/presentasi/screen/onboarding_screen.dart';
 import 'package:goalify/presentasi/screen/option_screen.dart';
 import 'package:goalify/presentasi/screen/profile_screen.dart';
-import 'package:goalify/presentasi/screen/schedule_detail_screen.dart';
 import 'package:goalify/presentasi/screen/schedule_goals_screen.dart';
 import 'package:goalify/presentasi/screen/sign_in_screen.dart';
 import 'package:goalify/presentasi/screen/sign_up_screen.dart';
 import 'package:goalify/presentasi/screen/splash_screen.dart';
-
 import 'package:goalify/presentasi/widget/navigation_bar.dart';
 
 void main() {
@@ -40,7 +37,6 @@ class MyApp extends StatelessWidget {
         '/onboardingScreen': (context) => const OnboardingScreen(),
         '/signInScreen': (context) => const SignInScreen(),
         '/signUpScreen': (context) => const SignUpScreen(),
-        // '/homeScreen': (context) => const HomeScreen(),
         '/schedule&goals': (context) => const ScheduleGoalsScreen(),
         '/options': (context) => const OptionScreen(),
         '/addSchedule': (context) => const AddScheduleScreen(),

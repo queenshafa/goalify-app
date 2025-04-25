@@ -33,7 +33,6 @@ class AddGoalsScreen extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            // alignment: Alignment.center,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xff3F369A), Color(0xff070942)],
@@ -98,9 +97,7 @@ class AddGoalsScreen extends StatelessWidget {
                               color: Color(0xFF373AC5),
                             ),
                             child: IconButton(
-                              onPressed: () {
-                                // todo: logic add subtask
-                              },
+                              onPressed: () {},
                               icon: const Icon(Icons.add, color: Colors.white),
                             ),
                           ),
@@ -120,9 +117,7 @@ class AddGoalsScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 48,
                           child: ElevatedButton(
-                            onPressed: () {
-                              // todo: logic submit
-                            },
+                            onPressed: () {},
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24),

@@ -228,21 +228,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             isLast: true,
           ),
           const SizedBox(height: 20),
-          // ElevatedButton(
-          //   style: ElevatedButton.styleFrom(
-          //     backgroundColor: Colors.white.withOpacity(0.4),
-          //     minimumSize: const Size(370, 50),
-          //     side: BorderSide(color: Colors.white.withOpacity(0.5)),
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(10),
-          //     ),
-          //   ),
-          //   onPressed: () {},
-          //   child: const Text(
-          //     'Timeline Detail',
-          //     style: TextStyle(fontSize: 18, color: Colors.white),
-          //   ),
-          // ),
         ],
       ),
     );
@@ -365,9 +350,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               color: Colors.black,
             ),
           ),
-          // SizedBox(
-          //   height: 5,
-          // ),
           Text(
             'Time : 09:00',
             style: TextStyle(

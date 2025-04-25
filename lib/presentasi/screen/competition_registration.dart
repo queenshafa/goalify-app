@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goalify/presentasi/widget/custom_text_box.dart'; // pastikan path sesuai
+import 'package:goalify/presentasi/widget/custom_text_box.dart';
 
 class CompetitionRegistration extends StatefulWidget {
   const CompetitionRegistration({super.key});
@@ -54,8 +54,6 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
       ),
     );
   }
-
-  // ---------- UI Sections ----------
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
@@ -230,9 +228,7 @@ class _CompetitionRegistrationState extends State<CompetitionRegistration> {
           borderRadius: BorderRadius.circular(50),
         ),
       ),
-      onPressed: () {
-        // Handle registration action
-      },
+      onPressed: () {},
       child: const Text(
         'Register Now!',
         style: TextStyle(

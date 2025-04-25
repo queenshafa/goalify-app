@@ -21,7 +21,6 @@ class _NavBarState extends State<NavBar> {
     const CompetitionScreen(),
     EventScreen(),
     const ProfileScreen()
-    // Tambahin Goals dan Profile kalo udah ada
   ];
 
   void _onItemTapped(int index) {
